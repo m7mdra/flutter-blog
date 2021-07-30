@@ -11,16 +11,15 @@ class SmallAboutWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (isMobileScreen(context)) AvatarWidget(size: Size(100, 100)),
-        if (isMobileScreen(context)) SizedBox(width: 16),
+        if (isMobileScreen(context)) SizedBox(width: 8),
         Column(
           children: [
-            if (MediaQuery.of(context).size.width > 400)
-              AvatarWidget(size: Size(150, 150)),
-            SizedBox(height: 8),
+            if (isLargeScreen(context)) AvatarWidget(size: Size(150, 150)),
+            if (isLargeScreen(context)) SizedBox(height: 8),
             Text(
               'Mohammed Elshiekh',
               style:
-                  GoogleFonts.lato(fontWeight: FontWeight.w900, fontSize: 20),
+                  GoogleFonts.raleway(fontWeight: FontWeight.w900, fontSize: 20),
             ),
             SizedBox(height: 8),
             Text(
@@ -37,6 +36,9 @@ class SmallAboutWidget extends StatelessWidget {
       ],
     );
   }
+
+  bool isLargeScreen(BuildContext context) =>
+      MediaQuery.of(context).size.width > 400;
 
   bool isMobileScreen(BuildContext context) =>
       MediaQuery.of(context).size.width <= 400;

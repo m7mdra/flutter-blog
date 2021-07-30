@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myblog/small_about_widget.dart';
 
 import 'logo_name_widget.dart';
+import 'navigation_header_delegate.dart';
 import 'navigation_tabs.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,24 +49,18 @@ class _HomePageState extends State<HomePage>
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth <= 400) {
-            return Column(
-              children: [
-                Container(
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                    child: Container(
                   color: Colors.white,
                   padding: const EdgeInsets.only(
                       top: 24, right: 24, left: 24, bottom: 8),
                   child: SmallAboutWidget(),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(
-                      top: 24, right: 24, left: 24, bottom: 8),
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(offset: Offset(0, 1), color: Colors.black12),
-                  ], color: Colors.white),
-                  child: Row(
-                    children: [NavigationTabs(tabController: _tabController)],
-                  ),
-                )
+                )),
+                SliverPersistentHeader(
+                    delegate: NavigationHeaderDelegate(_tabController),floating: true,pinned: true,),
+                SliverToBoxAdapter(child: Container(height: 1000))
               ],
             );
           } else {
