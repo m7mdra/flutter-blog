@@ -1,0 +1,6 @@
+[build]
+  # The relative path to the directory to be published
+  publish = "build/web"
+
+  # Our Flutter Web build command
+  command = "chmod 777 ./web_build.sh && ./web_build.sh"
