@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myblog/avatar_widget.dart';
 
 class LogoNameWidget extends StatelessWidget {
   const LogoNameWidget({
@@ -10,7 +11,7 @@ class LogoNameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CircleAvatar(child: Text("ME")),
+        AvatarWidget(size: Size(50,50)),
         const SizedBox(width: 16),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

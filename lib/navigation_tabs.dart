@@ -36,7 +36,7 @@ class NavigationTabs extends StatelessWidget {
             borderSide: BorderSide(width: 1.0, color: Colors.black)),
         labelStyle: GoogleFonts.lato(
             fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
-        indicatorPadding: EdgeInsets.all(-8),
+        indicatorPadding: EdgeInsets.all(-10),
         labelPadding: EdgeInsets.zero,
         unselectedLabelStyle:
         GoogleFonts.lato(fontSize: 14, color: Colors.grey.withAlpha(50)),

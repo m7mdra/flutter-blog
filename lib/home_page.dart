@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myblog/small_about_widget.dart';
 
 import 'logo_name_widget.dart';
 import 'navigation_tabs.dart';
@@ -44,42 +45,64 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            padding:
-                const EdgeInsets.only(top: 24, right: 24, left: 24, bottom: 8),
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(offset: Offset(0, 1), color: Colors.black12)
-            ], color: Colors.white),
-            child: Row(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth <= 400) {
+            return Column(
               children: [
-                LogoNameWidget(),
-                Spacer(),
-                NavigationTabs(tabController: _tabController)
+                Container(
+                  color: Colors.white,
+                  padding: const EdgeInsets.only(
+                      top: 24, right: 24, left: 24, bottom: 8),
+                  child: SmallAboutWidget(),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                      top: 24, right: 24, left: 24, bottom: 8),
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(offset: Offset(0, 1), color: Colors.black12),
+                  ], color: Colors.white),
+                  child: Row(
+                    children: [NavigationTabs(tabController: _tabController)],
+                  ),
+                )
               ],
-            ),
-          ),
-          Flexible(
-            child: PageView(
-              onPageChanged: (page) {
-                setState(() {
-                  _activePage = page;
-                  _tabController.animateTo(page,
-                      duration: Duration(milliseconds: 200),
-                      curve: Curves.linear);
-                });
-              },
+            );
+          } else {
+            return Column(
               children: [
-                Container(color: Colors.red),
-                Container(color: Colors.black),
-                Container(color: Colors.blue),
-                Container(color: Colors.yellow),
+                Container(
+                  padding: const EdgeInsets.only(
+                      top: 24, right: 24, left: 24, bottom: 8),
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(offset: Offset(0, 1), color: Colors.black12)
+                  ], color: Colors.white),
+                  child: Row(
+                    children: [
+                      LogoNameWidget(),
+                      Spacer(),
+                      NavigationTabs(tabController: _tabController)
+                    ],
+                  ),
+                ),
+                Flexible(
+                  child: PageView(
+                    onPageChanged: (page) {
+                      setState(() {
+                        _activePage = page;
+                        _tabController.animateTo(page,
+                            duration: Duration(milliseconds: 200),
+                            curve: Curves.linear);
+                      });
+                    },
+                    children: [SmallAboutWidget()],
+                    controller: _pageController,
+                  ),
+                )
               ],
-              controller: _pageController,
-            ),
-          )
-        ],
+            );
+          }
+        },
       ),
     );
   }
