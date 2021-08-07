@@ -8,4 +8,4 @@ then
      fi
   flutter/bin/flutter pub upgrade
   flutter/bin/flutter config --enable-web
-  flutter/bin/flutter build web --release --dart-define=FLUTTER_WEB_USE_EXPERIMENTAL_CANVAS_TEXT=true
+  flutter/bin/flutter build web --release

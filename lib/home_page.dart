@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myblog/article_widget.dart';
+import 'package:myblog/blog_page.dart';
 import 'package:myblog/small_about_widget.dart';
 
 import 'logo_name_widget.dart';
@@ -60,7 +62,11 @@ class _HomePageState extends State<HomePage>
                 )),
                 SliverPersistentHeader(
                     delegate: NavigationHeaderDelegate(_tabController),floating: true,pinned: true,),
-                SliverToBoxAdapter(child: Container(height: 1000))
+
+                SliverList(delegate: SliverChildListDelegate(List.generate(25, (index) => ArticleWidget(article: Article(
+                    "استخدام ExoPlayer لتشغيل الوسائط و قوائم التشغيل والمزيد من المزايا",
+                    "٢٥ مايو ٢٠٢١",
+                    "١٠ دقائق"))).toList()))
               ],
             );
           } else {
@@ -90,7 +96,7 @@ class _HomePageState extends State<HomePage>
                             curve: Curves.linear);
                       });
                     },
-                    children: [SmallAboutWidget()],
+                    children: [BlogPage()],
                     controller: _pageController,
                   ),
                 )

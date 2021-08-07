@@ -13,8 +13,9 @@ class SmallAboutWidget extends StatelessWidget {
         if (isMobileScreen(context)) AvatarWidget(size: Size(100, 100)),
         if (isMobileScreen(context)) SizedBox(width: 8),
         Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            if (isLargeScreen(context)) AvatarWidget(size: Size(150, 150)),
+            if (isLargeScreen(context)) AvatarWidget(size: Size(120, 120)),
             if (isLargeScreen(context)) SizedBox(height: 8),
             Text(
               'Mohammed Elshiekh',
@@ -24,13 +25,19 @@ class SmallAboutWidget extends StatelessWidget {
             SizedBox(height: 8),
             Text(
               'Senior Mobile developer',
-              style: GoogleFonts.lato(color: Colors.grey, fontSize: 16),
+              style: GoogleFonts.lato(color: Colors.grey, fontSize: 15),
             ),
-            SizedBox(height: 4),
             Text(
               'Android/iOS Native, Flutter',
               style: GoogleFonts.lato(color: Colors.grey, fontSize: 12),
             ),
+            SizedBox(height: 4),
+
+            Text(
+              'Consultant @ UNDP sudan',
+              style: GoogleFonts.lato(color: Colors.grey, fontSize: 15),
+            ),
+
           ],
         ),
       ],
